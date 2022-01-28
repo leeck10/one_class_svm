@@ -1,0 +1,43 @@
+package "one_class_svm_tool"
+version "2012.5"
+
+purpose "A command line utility to train/test one class SVM."
+
+section "Training options"
+option "cost" c "set Cost of one class SVM" float default="1" no
+option "model" m "set model file name" string no
+option "binary" b "save/load model in binary format" flag off
+option "skip_eval" - "skip test set evaluation in the middle of training" flag off
+option "random" r "use random_shuffle in train_data (disabled if use 0)" int default="0" no
+option "train_num" - "set number of sentence in train_data for training (for experiments) (disabled if use 0)" int default="0" no
+option "iter" i "iterations for training algorithm (sgd)" int default="100" no
+option "tol" t "set Tolerance" float default="1e-04" no
+option "period" - "save model periodically (sgd)" int default="0" no
+option "verbose" v "verbose mode" flag off
+
+section "Predict options"
+option "output" o "prediction output filename" string no
+
+section "one class SVM options"
+option "epsilon" e "set epsilon" float default="0.001" no
+option "buf" - "number of new constraints to accumulated before recomputing the QP (sgd)" int default="10" no
+option "rm_inactive" - "inactive constraints are removed (iteration) (smo, one_slack_smo)" int default="50" no
+option "save_sv" - "save support vector (one_slack)" flag off
+
+section "Kernel options"
+option "kernel" - "kernel type (0=Linear 1=POLY 2=RBF 3=SIGMOID in SVMs)" int default="0" no
+option "gamma" - "gamma in RBF kernel (in SVMs)" float default="1" no
+option "coef" - "coef in POLY/SIGMOID kernel (in SVMs)" float default="1" no
+option "degree" - "degree in POLY kernel (in SVMs)" int default="3" no
+
+defgroup "MODE"
+groupoption "predict" p "prediction mode, default is training mode" group="MODE"
+groupoption "show" - "show-feature mode" group="MODE"
+groupoption "convert" - "convert mode ('txt model to bin model' or 'bin model to txt model (with -b)') and remove zero features (with --tol threshold)" group="MODE"
+
+defgroup "Parameter Estimate Method"
+groupoption "one_slack" - "use 1-slack one class SVM without Gram matrix" group="Parameter Estimate Method"
+groupoption "one_slack2" - "use 1-slack one class SVM using Gram matrix" group="Parameter Estimate Method"
+groupoption "sgd" - "use SGD (Pegasos) in primal optimization (random shuffled train_data)" group="Parameter Estimate Method"
+groupoption "sgd2" - "use Stachastic Gradient Descent (Pegasos) in primal optimization (pick random examples)" group="Parameter Estimate Method"
+
