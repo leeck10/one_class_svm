@@ -3,7 +3,8 @@
 ## Introduction
 
 "Pegasos algorithm for one-class SVM" is a training algorithm for one-class support vector machinie (one-class SVM). This algorithm is much faster than the standard one-class SVM without loss of performance in the case of linear kernel. 
-References
+
+### References
 
 * Changki Lee. Pegasos Algorithm for One-Class Support Vector Machine. IEICE Transactions on Information and Systems, Vol.E96-D, No.5, May 2013, pp.1223-1226.
 * Changki Lee. 1-Slack One-Class SVM for Fast Learning. Journal of KIISE, ISSN:1229-7712, VOL.19, NO.5, May 2013, pp.253-257.
@@ -24,8 +25,6 @@ string_feature_n is a feature string that have 1 as a feature value.
     [label] [string_feature1:value] [string_feature2:value] ...
 
 ## Usage
-
-one_class_svm_tool 2013.1
 
 A command line utility to train/test one-class SVM.
 
